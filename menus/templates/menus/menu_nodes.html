@@ -1,0 +1,11 @@
+{% for node in nodes %}
+  <li class="menu__item{% if node.is_active %} menu__item--active{% endif %}{% if node.is_ancestor %} menu__item--open{% endif %}">
+    <a href="{{ node.url }}" class="menu__link">{{ node.title }}</a>
+    {% if node.show_children and node.children %}
+      <ul class="menu__sublist">
+        {% include "menus/menu_nodes.html" with nodes=node.children only %}
+      </ul>
+    {% endif %}
+  </li>
+{% endfor %}
+

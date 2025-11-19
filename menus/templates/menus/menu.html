@@ -1,0 +1,14 @@
+<nav class="menu" data-menu-slug="{{ menu.slug }}">
+  {% if menu.nodes %}
+    <ul class="menu__list">
+      {% include "menus/menu_nodes.html" with nodes=menu.nodes %}
+    </ul>
+  {% else %}
+    <p class="menu__empty">
+      Меню «{{ menu.title }}» пока пустое.
+      <br />
+      <a href="{% url 'admin:menus_menu_add' %}">Создать в админке →</a>
+    </p>
+  {% endif %}
+</nav>
+
